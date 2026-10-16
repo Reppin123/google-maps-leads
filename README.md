@@ -214,4 +214,4 @@ mailbox. CI (`.github/workflows/selftest.yml`) runs it on every push and also fa
 project data is ever committed. What it cannot cover, and so needs a person once per setup: the real
 mailbox login (Inboxes → Check now, Send itself a test) and the first real question to the assistant.
 
-See [`CHANGELOG.md`](CHANGELOG.md) for history and [`LICENSE`](LICENSE) for terms.
+See [`CHANGELOG.md`](CHANGELOG.md) for history. MIT licensed, see [`LICENSE`](LICENSE); the bundled board libraries keep their own licences ([`board/vendor/THIRD_PARTY.md`](board/vendor/THIRD_PARTY.md)).

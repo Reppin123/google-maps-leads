@@ -2,7 +2,7 @@
 
 ## 2026-10-16
 
-- First shareable version, with fresh history. New README with set-up and step-by-step use (app and plain
+- First shareable version, with fresh history, under the MIT licence. New README with set-up and step-by-step use (app and plain
   scripts), and `AGENTS.md` (plus `CLAUDE.md`) telling AI agents how to use the repo safely and well.
 - `enrich_websites.py --profile-like` now defaults to every business instead of one category.
 - Mailbox screen: domain checks (SPF, DKIM, DMARC) fold into one line when they pass; plainer app-password
