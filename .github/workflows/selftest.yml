@@ -1,0 +1,15 @@
+name: selftest
+on: [push, pull_request]
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Every check, offline, on throwaway projects
+        run: uv run --script app.py selftest
+      - name: No project data in the repo
+        run: |
+          if git ls-files | grep -E '\.db$|(^|/)project\.json$|^data/|^dashboard/|_export\.json$'; then
+            echo "Project data must never be committed."; exit 1
+          fi

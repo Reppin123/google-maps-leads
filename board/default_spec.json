@@ -1,0 +1,371 @@
+{
+ "kit": 1,
+ "dataset_id": "__SLUG__",
+ "title": "__NAME__",
+ "subtitle": "Businesses from Google Maps, with emails and socials found on their websites",
+ "id_field": "place_id",
+ "display_field": "name",
+ "freshness_field": "last_seen",
+ "geo": {
+  "lat": "lat",
+  "lng": "lng",
+  "min_coverage": 0.01
+ },
+ "dedup_keys": [
+  "phone",
+  "website_host"
+ ],
+ "junk_email_domains": [
+  "webador.com",
+  "webador.es",
+  "wix.com",
+  "wixpress.com",
+  "squarespace.com",
+  "sentry.io",
+  "example.com",
+  "godaddy.com",
+  "shopify.com",
+  "weebly.com",
+  "domain.com",
+  "email.com",
+  "sentry-elb"
+ ],
+ "fields": [
+  {
+   "key": "place_id",
+   "label": "Place ID",
+   "type": "id",
+   "hidden": true
+  },
+  {
+   "key": "name",
+   "label": "Business",
+   "type": "text",
+   "pin": true,
+   "search": 3
+  },
+  {
+   "key": "profile",
+   "label": "Search",
+   "type": "enum",
+   "facet": true,
+   "chart": "bar",
+   "color": true
+  },
+  {
+   "key": "primary_category",
+   "label": "Category",
+   "type": "enum",
+   "facet": true,
+   "chart": "topn",
+   "search": 2
+  },
+  {
+   "key": "categories",
+   "label": "All categories",
+   "type": "tags",
+   "facet": true,
+   "search": 1,
+   "column": false
+  },
+  {
+   "key": "suburb",
+   "label": "Suburb",
+   "type": "enum",
+   "facet": true,
+   "search": 2
+  },
+  {
+   "key": "state",
+   "label": "State or region",
+   "type": "enum",
+   "facet": true,
+   "chart": "bar",
+   "note": "filled from coordinates where the address did not say",
+   "derived": true
+  },
+  {
+   "key": "address",
+   "label": "Address",
+   "type": "text",
+   "search": 1,
+   "column": false
+  },
+  {
+   "key": "phone",
+   "label": "Phone",
+   "type": "phone",
+   "search": 1
+  },
+  {
+   "key": "email",
+   "label": "Email",
+   "type": "email",
+   "search": 1
+  },
+  {
+   "key": "website",
+   "label": "Website",
+   "type": "url"
+  },
+  {
+   "key": "rating",
+   "label": "Rating",
+   "type": "number",
+   "chart": "ordinal",
+   "range": true,
+   "format": "rating"
+  },
+  {
+   "key": "review_count",
+   "label": "Reviews",
+   "short": "Reviews",
+   "type": "number",
+   "chart": "histogram",
+   "log": true,
+   "range": true,
+   "format": "int"
+  },
+  {
+   "key": "signal_score",
+   "label": "Signal",
+   "short": "Signal",
+   "type": "number",
+   "chart": "ordinal",
+   "range": true,
+   "format": "int",
+   "note": "+2 no website, +1 phone, +1 reviews ≥10, +1 reviews ≥50, +1 tier 1–2"
+  },
+  {
+   "key": "has_website",
+   "label": "Has website",
+   "type": "flag"
+  },
+  {
+   "key": "has_email",
+   "label": "Has email",
+   "type": "flag",
+   "derived": "email"
+  },
+  {
+   "key": "has_phone",
+   "label": "Has phone",
+   "type": "flag",
+   "derived": "phone"
+  },
+  {
+   "key": "has_rating",
+   "label": "Has rating",
+   "type": "flag",
+   "derived": "rating"
+  },
+  {
+   "key": "social_facebook",
+   "label": "Facebook",
+   "type": "url",
+   "column": false
+  },
+  {
+   "key": "social_instagram",
+   "label": "Instagram",
+   "type": "url",
+   "column": false
+  },
+  {
+   "key": "social_linkedin",
+   "label": "LinkedIn",
+   "type": "url",
+   "column": false
+  },
+  {
+   "key": "enrich_status",
+   "label": "Enrichment",
+   "type": "enum",
+   "facet": true,
+   "chart": "bar",
+   "column": false
+  },
+  {
+   "key": "outreach",
+   "label": "Email outreach",
+   "type": "enum",
+   "facet": true,
+   "chart": "bar",
+   "note": "from campaigns: queued, contacted, replied, no reply, bounced, unsubscribed",
+   "derived": true
+  },
+  {
+   "key": "campaign",
+   "label": "Campaign",
+   "type": "enum",
+   "facet": true,
+   "column": false,
+   "derived": true
+  },
+  {
+   "key": "emails_sent",
+   "label": "Emails sent",
+   "short": "Sent",
+   "type": "number",
+   "column": false,
+   "derived": true
+  },
+  {
+   "key": "last_email_at",
+   "label": "Last emailed",
+   "type": "datetime",
+   "column": false,
+   "derived": true
+  },
+  {
+   "key": "state_derived",
+   "label": "State derived",
+   "type": "flag",
+   "column": false,
+   "hidden": true
+  },
+  {
+   "key": "lat",
+   "label": "Latitude",
+   "type": "number",
+   "column": false,
+   "hidden": true
+  },
+  {
+   "key": "lng",
+   "label": "Longitude",
+   "type": "number",
+   "column": false,
+   "hidden": true
+  },
+  {
+   "key": "first_seen",
+   "label": "First seen",
+   "type": "datetime",
+   "column": false
+  },
+  {
+   "key": "last_seen",
+   "label": "Last pulled",
+   "type": "datetime",
+   "column": false
+  }
+ ],
+ "links": {
+  "maps": "https://www.google.com/maps/place/?q=place_id:{place_id}"
+ },
+ "default_sort": [
+  {
+   "field": "signal_score",
+   "dir": "desc"
+  },
+  {
+   "field": "review_count",
+   "dir": "desc"
+  }
+ ],
+ "default_view": "table",
+ "views": [
+  "table",
+  "board",
+  "map",
+  "charts"
+ ],
+ "pipeline": [
+  "New",
+  "Queued",
+  "Contacted",
+  "Replied",
+  "Qualified",
+  "Won",
+  "Lost"
+ ],
+ "closed_stages": [
+  "Won",
+  "Lost"
+ ],
+ "kpis": [
+  "rows",
+  "stages",
+  "overdue",
+  "coverage",
+  "median:rating",
+  "freshness",
+  "duplicates"
+ ],
+ "saved_views": [
+  {
+   "name": "Best first: no website, has phone",
+   "state": {
+    "filters": {
+     "has_website": [
+      "0"
+     ],
+     "has_phone": [
+      "1"
+     ]
+    },
+    "sort": [
+     {
+      "field": "signal_score",
+      "dir": "desc"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Emailable, rated 4.5+",
+   "state": {
+    "filters": {
+     "has_email": [
+      "1"
+     ]
+    },
+    "ranges": {
+     "rating": [
+      4.5,
+      5
+     ]
+    },
+    "sort": [
+     {
+      "field": "review_count",
+      "dir": "desc"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Overdue follow-ups",
+   "state": {
+    "filters": {
+     "_overdue": [
+      "1"
+     ]
+    },
+    "view": "table"
+   }
+  },
+  {
+   "name": "Possible duplicates",
+   "state": {
+    "filters": {
+     "_dup": [
+      "1"
+     ]
+    },
+    "sort": [
+     {
+      "field": "phone",
+      "dir": "asc"
+     }
+    ]
+   }
+  }
+ ],
+ "auto_stages": {
+  "queued": "Queued",
+  "contacted": "Contacted",
+  "replied": "Replied"
+ }
+}

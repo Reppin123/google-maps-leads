@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+# The product never holds project data. Projects live outside this repo
+# (for example ~/maps-leads-projects/<name>/). These rules are a second fence.
+*.db
+*.log
+*_export.json
+data/
+dashboard/
+exports/
+project.json
+# downloaded on first use by scrape/world_grid.py
+scrape/data/

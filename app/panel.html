@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Outreach</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#16181d;--ink2:#4b5160;--ink3:#7d8494;--line:#e3e6eb;--fill:#eef0f4;--fill2:#e2e6ec;--accent:#2563eb;--accent-ink:#fff;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--panel:#171a21;--ink:#eef0f4;--ink2:#b3b9c6;--ink3:#7d8494;--line:#262b35;--fill:#20252e;--fill2:#2a303b;--accent:#60a5fa;--accent-ink:#0b1220;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.5 var(--font)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:5px 11px}
+button:hover{background:var(--fill)}button:disabled{opacity:.5;cursor:default}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}button.primary:hover{filter:brightness(1.08)}
+button.quiet{border-color:transparent;background:transparent;color:var(--ink2)}button.quiet:hover{background:var(--fill)}
+button.danger{color:var(--bad)}
+input,select,textarea{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0;width:100%}
+input[type=checkbox],input[type=radio]{width:auto}textarea{resize:vertical;line-height:1.55}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+a{color:var(--accent);text-decoration:none}
+header{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5}
+header h1{font-size:15px;margin:0;font-weight:650}
+.tabs{display:flex;gap:2px;background:var(--fill);border-radius:8px;padding:3px}.tabs a{padding:4px 12px;border-radius:6px;color:var(--ink2)}.tabs a.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.meter{margin-left:auto;color:var(--ink2);font-size:12px;display:flex;gap:14px;align-items:center}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ink3);margin-right:5px}.dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}
+main{max-width:1180px;margin:0 auto;padding:18px 20px 80px}
+.banner{border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:var(--panel)}
+.banner.bad{border-color:var(--bad)}.banner.warn{border-color:var(--warn)}.banner span{flex:1}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.card h2{font-size:13px;margin:0 0 2px;font-weight:650}.card .sub{color:var(--ink3);margin:0 0 12px;font-size:12px}
+.split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px}
+@media (max-width:860px){.split{grid-template-columns:minmax(0,1fr)}}
+label{display:block;font-size:12px;color:var(--ink2);margin:10px 0 3px}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1 1 120px;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;background:var(--panel);color:var(--ink2)}
+.chip.on{background:var(--accent);color:var(--accent-ink);border-color:transparent}.chip small{opacity:.7;margin-left:4px}
+.big{font-size:30px;font-weight:650;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.muted{color:var(--ink3)}.small{font-size:12px}
+ul.plain{list-style:none;margin:8px 0;padding:0}ul.plain li{padding:3px 0;display:flex;justify-content:space-between;gap:10px;color:var(--ink2)}
+table{width:100%;border-collapse:collapse}th{font-weight:500;color:var(--ink3);font-size:12px;text-align:left}th,td{padding:7px 8px;border-bottom:1px solid var(--line)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}tr.click{cursor:pointer}tr.click:hover td{background:var(--fill)}
+.pill{display:inline-block;border-radius:999px;padding:1px 9px;font-size:11px;background:var(--fill2);color:var(--ink2)}
+.pill.active{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}.pill.paused{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.step{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.stephead{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}.stephead b{font-weight:650}.stephead input{width:58px}
+.vtabs{display:flex;gap:4px;margin-left:auto;align-items:center}
+.vtab{width:28px;height:26px;padding:0;text-align:center;font-weight:600}.vtab.on{background:var(--ink);color:var(--panel);border-color:transparent}
+.irow{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:12.5px;white-space:nowrap;overflow:hidden}.irow span{overflow:hidden;text-overflow:ellipsis}
+.preview{background:var(--fill);border-radius:8px;padding:12px 14px;white-space:pre-wrap;font-size:12.5px;min-height:120px;overflow-wrap:anywhere}
+.preview .to{color:var(--ink3);font-size:11.5px;display:block}.preview .subj{font-weight:650;display:block;margin:2px 0 8px}
+.warnline{color:var(--warn);font-size:12px;margin-top:6px}.badline{color:var(--bad)}
+.bar{position:relative;height:8px;background:var(--fill);border-radius:4px;min-width:120px}.bar i{position:absolute;top:0;bottom:0;background:color-mix(in srgb,var(--accent) 35%,transparent);border-radius:4px}.bar b{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--accent)}
+.feed .item{padding:10px 0;border-bottom:1px solid var(--line)}.feed .quote{background:var(--fill);border-radius:6px;padding:8px 10px;margin:6px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.topbar{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}.topbar input{flex:1 1 240px;font-size:15px;font-weight:600}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:8px 16px;border-radius:8px;z-index:20;max-width:90vw}
+code{font-family:var(--mono);font-size:12px;background:var(--fill);padding:1px 5px;border-radius:4px}
+ol.setup{padding-left:18px;color:var(--ink2)}ol.setup li{margin:5px 0}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" title="All projects" style="color:var(--ink3)">&larr; Projects</a><h1 id="title">Outreach</h1>
+  <nav class="tabs"><a href="#/ask" data-tab="ask">Ask</a><a id="leadsTab" hidden>Leads</a><a href="#/find" data-tab="find">Find leads</a><a href="#/" data-tab="campaigns">Campaigns</a><a href="#/inbox" data-tab="inbox">Replies</a><a href="#/mailbox" data-tab="mailbox">Inboxes</a><a href="#/dnc" data-tab="dnc">Do not contact</a></nav>
+  <div class="meter" id="meter"></div>
+</header>
+<main id="main"></main>
+<script>
+const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=(a,b)=>b?(100*a/b).toFixed(1)+'%':'-';
+const LET='ABCD';
+let S=null, C=null, AUD=null, sampleId=null;
+
+const BASE=location.pathname.replace(/\/$/,'');      // /p/<project>
+async function api(path, body){
+  const r=await fetch(BASE+path, body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const j=await r.json(); if(j&&j.error) toast(j.error); return j;
+}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.append(t);setTimeout(()=>t.remove(),4200);}
+const debounce=(fn,ms=350)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}};
+
+async function route(){
+  S=await api('/api/state');
+  const h=location.hash||'#/';
+  $$('.tabs a').forEach(a=>a.classList.toggle('on', h.startsWith('#/c/')?a.dataset.tab==='campaigns':a.getAttribute('href')===h));
+  const cap=S.capacity, s=S.settings;
+  document.title=$('#title').textContent=S.project; $('#leadsTab').hidden=!S.has_board; $('#leadsTab').href=BASE+'/leads';
+  $('#meter').innerHTML=`<span><span class="dot ${s.has_password?'ok':'warn'}"></span>${s.has_password?(S.inboxes.length===1?esc(S.inboxes[0].email):S.inboxes.length+' inboxes'):'No inbox connected'}</span>
+    <span>${cap.sent_24h} of ${cap.cap_today} sent in the last 24 hours</span>
+    <span><span class="dot ${S.schedule_on?'ok':''}"></span>Background sending ${S.schedule_on?'on':'off'}</span>`;
+  if(h.startsWith('#/c/')) return viewCampaign(h.slice(4));
+  if(h==='#/mailbox') return viewMailbox();
+  if(h==='#/inbox') return viewInbox();
+  if(h==='#/find') return viewFind();
+  if(h==='#/ask') return viewAsk();
+  clearInterval(findTimer);
+  if(h==='#/dnc') return viewDnc();
+  viewList();
+}
+window.addEventListener('hashchange',route);
+
+function banners(){
+  const s=S.settings; let out='';
+  if(s.paused_reason) out+=`<div class="banner bad"><span><b>All sending is stopped.</b> ${esc(s.paused_reason)} Check the bounced addresses before you resume.</span><button id="resumeAll">Resume sending</button></div>`;
+  if(s.last_error&&!(S.inboxes||[]).some(b=>b.status==='broken'&&s.last_error.includes(b.email))) out+=`<div class="banner warn"><span>${esc(s.last_error)}</span></div>`;
+  if(!s.has_password) out+=`<div class="banner warn"><span>You can design campaigns now. Nothing can be sent until an inbox is connected.</span><a href="#/mailbox">Connect an inbox</a></div>`;
+  (S.inboxes||[]).filter(b=>b.status==='broken').forEach(b=>out+=`<div class="banner bad"><span><b>${esc(b.email)} has stopped sending.</b> ${esc(b.status_reason)}</span><a href="#/mailbox">Look</a></div>`);
+  return out;
+}
+function wireBanners(){const b=$('#resumeAll'); if(b) b.onclick=async()=>{await api('/api/resume-sending',{});route();};}
+
+/* ── campaigns list ─────────────────────────────────────────────── */
+function viewList(){
+  const c=S.contacts, ok=c.ok||0, bad=(c.placeholder||0)+(c.bad_syntax||0)+(c.gov_edu||0)+(c.bounced||0);
+  $('#main').innerHTML=banners()+`
+  <div class="topbar"><div><b>${ok.toLocaleString()}</b> inboxes you can email <span class="muted">· ${bad.toLocaleString()} held back as placeholders, malformed or bounced · ${S.dnc_count} on do not contact</span></div>
+    <span style="flex:1"></span><button class="primary" id="new">New campaign</button></div>
+  <div class="card" style="padding:4px 8px">${S.campaigns.length?`<table><thead><tr><th>Campaign</th><th></th><th class="num">Leads</th><th class="num">Emails sent</th><th class="num">Replied</th><th class="num">Bounced</th></tr></thead><tbody>
+    ${S.campaigns.map(k=>`<tr class="click" data-id="${k.id}"><td><b>${esc(k.name)}</b></td><td><span class="pill ${k.status}">${k.status}</span></td>
+      <td class="num">${k.enrolled||'-'}</td><td class="num">${k.sent||'-'}</td><td class="num">${k.replied} <span class="muted">${k.enrolled?pct(k.replied,k.enrolled):''}</span></td><td class="num">${k.bounced} <span class="muted">${k.enrolled?pct(k.bounced,k.enrolled):''}</span></td></tr>`).join('')}
+    </tbody></table>`:`<p class="muted" style="padding:14px 10px;margin:0">No campaigns yet. A campaign is a group of leads, a series of emails, and up to four versions of each email to compare.</p>`}</div>`;
+  wireBanners();
+  $$('tr.click').forEach(tr=>tr.onclick=()=>location.hash='#/c/'+tr.dataset.id);
+  $('#new').onclick=async()=>{
+    const r=await api('/api/campaign/save',{name:'New campaign',audience:{max_leads:200},steps:[
+      {versions:[{subject:'',body:'Hi {short_name|there},\n\n'},{subject:'',body:'Hi {short_name|there},\n\n'}]},
+      {gap_days:3,versions:[{subject:'',body:''}]}]});
+    location.hash='#/c/'+r.id;
+  };
+}
+
+/* ── one campaign ───────────────────────────────────────────────── */
+let LEAD=0;
+async function viewCampaign(id){
+  C=await api('/api/campaign?id='+id); if(!C||C.error){location.hash='#/';return;}
+  C.steps.forEach(s=>s.show=0); LEAD=0; sampleId=null;
+  drawCampaign();
+}
+const locked=()=>C.status!=='draft';
+const stepLocked=s=>locked()&&s.sent>0;          // an email nobody has received yet can still be edited
+function drawCampaign(){
+  const a=C.audience, L=locked();
+  $('#main').innerHTML=banners()+`
+  <div class="topbar"><a href="#/">&larr; Campaigns</a><input id="cname" value="${esc(C.name)}"><span class="pill ${C.status}">${C.status}</span>
+    <button id="save">Save</button>${L&&C.status!=='done'?`<button id="toggle">${C.status==='active'?'Pause':'Resume'}</button>`:''}
+    <button class="quiet" id="dup">Duplicate</button>${L?'':'<button class="quiet danger" id="del">Delete</button>'}</div>
+  ${L?'<div id="results"></div>':''}
+  <div class="card" id="sec-audience"><h2>Who gets it</h2><p class="sub">One email per inbox, even when a chain lists the same address on many listings. ${a.picked?'This campaign started from leads you picked on the Leads board; anything you set below narrows that list. ':''}${L?'The list was fixed when the campaign launched.':''}</p>
+   <div class="split"><div>
+    <label>Trade</label><div class="chips" id="trades">${S.trades.map(t=>`<button class="chip ${(a.trades||[]).includes(t.name)?'on':''}" data-v="${esc(t.name)}">${esc(t.name)}<small>${t.n.toLocaleString()}</small></button>`).join('')}</div>
+    <label>State</label><div class="chips" id="states">${S.states.map(t=>`<button class="chip ${(a.states||[]).includes(t.name)?'on':''}" data-v="${esc(t.name)}">${esc(t.name)}<small>${t.n.toLocaleString()}</small></button>`).join('')}</div>
+    <div class="row"><div><label>Rating at least</label><input id="f_min_rating" type="number" step="0.1" min="0" max="5" value="${esc(a.min_rating)}"></div>
+      <div><label>Reviews at least</label><input id="f_min_reviews" type="number" min="0" value="${esc(a.min_reviews)}"></div>
+      <div><label>Lead score at least</label><input id="f_min_score" type="number" min="0" max="6" value="${esc(a.min_score)}"></div>
+      <div><label>Website</label><select id="f_website"><option value="">Any</option><option value="yes">Has one</option><option value="no">Has none</option></select></div></div>
+    <div class="row"><div><label>Send to at most</label><input id="f_max_leads" type="number" min="0" placeholder="everyone" value="${esc(a.max_leads)}"></div><div style="flex:3 1 240px"><label>&nbsp;</label>
+      <label style="display:inline;margin-right:14px"><input type="checkbox" id="f_include_shared" ${a.include_shared?'checked':''}> include chains</label>
+      <label style="display:inline"><input type="checkbox" id="f_allow_recontact" ${a.allow_recontact?'checked':''}> include leads from other campaigns</label></div></div>
+   </div><div id="audbox"><span class="muted">Counting...</span></div></div></div>
+
+  <div class="card" id="sec-emails"><h2>The emails</h2><p class="sub">Each lead is given one letter at random and keeps it for the whole series, so A and B are compared on like-for-like leads. The series stops for a business as soon as anyone there replies, bounces or unsubscribes.${L?' An email that has already gone to someone is locked, because changing it would make its numbers meaningless. Emails nobody has received yet can still be edited.':''}</p>
+   <div id="steps"></div>${L?'':'<button id="addstep">+ Add a follow-up</button>'}</div>
+
+  <div class="card"><h2>How it looks</h2><p class="sub">Cold email from a personal mailbox works when it looks like a person typed it. There are no images, tracking pixels or rewritten links here: they are what gets cold email filtered, and this tool has no server to host them. Your signature comes from the inbox that sends the email.</p>
+   <div class="row" id="looks">
+    <label class="step" style="flex:1 1 260px;margin:0;cursor:pointer"><input type="radio" name="look" value="plain" ${C.look!=='light'?'checked':''}> <b>Plain, like you typed it</b><div class="muted small" style="margin-top:4px">Your words exactly as written. The safest choice and the default.</div></label>
+    <label class="step" style="flex:1 1 260px;margin:0;cursor:pointer"><input type="radio" name="look" value="light" ${C.look==='light'?'checked':''}> <b>Light formatting</b><div class="muted small" style="margin-top:4px"><code>**bold**</code>, lines starting with <code>- </code> become bullets, <code>[words](https://link)</code> becomes a link.</div></label></div>
+   <label style="margin-top:10px"><input type="checkbox" id="first_plain" ${C.first_plain?'checked':''}> Keep the first email plain even with light formatting (recommended: a stranger's first email should not look designed)</label></div>
+
+  <div class="card"><h2>When</h2><p class="sub">Times are the recipient's local time: a Perth plumber gets it in Perth business hours. Sending is spread across the window with a few minutes between emails, and follow-up gaps count only the days ticked here.</p>
+   <div class="row"><div><label>Start on (your time)</label><input id="start_at" type="datetime-local" ${L?'disabled':''}></div>
+    <div><label>From</label><input id="window_start" type="time" value="${esc(C.window_start)}"></div><div><label>Until</label><input id="window_end" type="time" value="${esc(C.window_end)}"></div>
+    <div style="flex:2 1 260px"><label>Days</label><div class="chips" id="days">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((d,i)=>`<button class="chip ${C.weekdays.split(',').includes(String(i+1))?'on':''}" data-v="${i+1}">${d}</button>`).join('')}</div></div></div></div>
+
+  ${L?'':`<div class="card" id="sec-launch"><h2>Before it goes</h2><div id="preflight"></div></div>`}`;
+  wireBanners();
+  $('#f_website').value=a.website||'';
+  if(C.start_at){const d=new Date(C.start_at);$('#start_at').value=new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,16);}
+  drawSteps(); if(L) drawResults(); refreshAudience(); drawPreflight();
+
+  const chipToggle=(box,after)=>$$('.chip',$(box)).forEach(b=>b.onclick=()=>{if(L&&box!=='#days')return;b.classList.toggle('on');after();});
+  chipToggle('#trades',readAudience); chipToggle('#states',readAudience);
+  chipToggle('#days',()=>{C.weekdays=$$('#days .chip.on').map(b=>b.dataset.v).join(',');drawSteps();refreshAudience();});
+  $$('[id^=f_]').forEach(el=>{el.disabled=L; el.oninput=readAudience;});
+  $('#cname').oninput=e=>C.name=e.target.value;
+  $('#window_start').oninput=e=>C.window_start=e.target.value; $('#window_end').oninput=e=>C.window_end=e.target.value;
+  $('#start_at').oninput=e=>C.start_at=e.target.value?new Date(e.target.value).toISOString().slice(0,19)+'Z':null;
+  $$('input[name=look]').forEach(r=>r.onchange=()=>{C.look=r.value;C.steps.forEach((_,i)=>refreshPreview(i));});
+  $('#first_plain').onchange=e=>{C.first_plain=e.target.checked?1:0;refreshPreview(0);};
+  $('#save').onclick=async()=>{await save();toast('Saved');await freshen();};
+  $('#dup').onclick=async()=>{await save();const r=await api('/api/campaign/duplicate',{id:C.id});location.hash='#/c/'+r.id;};
+  const t=$('#toggle'); if(t) t.onclick=async()=>{await save();await api('/api/campaign/status',{id:C.id,status:C.status==='active'?'paused':'active'});viewCampaign(C.id);};
+  const d=$('#del'); if(d) d.onclick=async()=>{const r=await api('/api/campaign/delete',{id:C.id});if(r.ok)location.hash='#/';};
+  const as=$('#addstep'); if(as) as.onclick=()=>{if(C.steps.length>=6)return toast('Six emails is the most a series can hold.');C.steps.push({gap_days:4,same_thread:1,versions:[{subject:'',body:''}],show:0,sent:0});drawSteps();refreshAudience();};
+}
+function readAudience(){
+  const a=C.audience={picked:C.audience.picked,trades:$$('#trades .chip.on').map(b=>b.dataset.v),states:$$('#states .chip.on').map(b=>b.dataset.v)};
+  for(const k of ['min_rating','min_reviews','min_score','website','max_leads']){const v=$('#f_'+k).value;if(v!=='')a[k]=v;}
+  a.include_shared=$('#f_include_shared').checked; a.allow_recontact=$('#f_allow_recontact').checked;
+  LEAD=0; sampleId=null; refreshAudience();
+}
+const refreshAudience=debounce(async()=>{
+  if(locked()){const st=C.results?.status||{};const n=Object.values(st).reduce((x,y)=>x+y,0);
+    $('#audbox').innerHTML=`<div class="big">${n.toLocaleString()}</div><div class="muted">businesses in this campaign</div><ul class="plain">${Object.entries(st).map(([k,v])=>`<li><span>${esc(k)}</span><span>${v}</span></li>`).join('')}</ul>`;}
+  AUD=await api('/api/audience',{filters:C.audience,campaign_id:C.id,gaps:C.steps.slice(1).map(s=>s.gap_days||3),weekdays:C.weekdays});
+  if(!locked()){const f=AUD.forecast, cut=AUD.matched>AUD.count;
+  $('#audbox').innerHTML=`<div class="big">${AUD.count.toLocaleString()}</div><div class="muted">${cut?`picked at random from ${AUD.matched.toLocaleString()} who match`:'inboxes match'}</div>
+   ${f?`<p class="small" style="margin:10px 0 4px">At your inboxes' current limits, everyone gets the first email within <b>${f.days_to_first_touch_all} days</b> and the whole series finishes in about <b>${f.days_to_finish} days</b>, if nobody replies. Follow-ups are sent before new leads.</p>`:''}
+   ${Object.keys(AUD.excluded).length?`<label>Left out</label><ul class="plain">${Object.entries(AUD.excluded).map(([k,v])=>`<li><span>${esc(k)}</span><span>${v.toLocaleString()}</span></li>`).join('')}</ul>`:''}
+   ${AUD.sample.length?`<label>A few of them</label><ul class="plain">${AUD.sample.map(r=>`<li><span>${esc(r.name)}</span><span class="muted">${esc(r.suburb||'')} ${esc(r.state||'')}</span></li>`).join('')}</ul>`:''}`;}
+  sampleId=AUD.ids[LEAD]||null;                              // every email in the series previews the same lead
+  C.steps.forEach((_,i)=>refreshPreview(i));
+},300);
+
+const DAYNAMES=['','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+function gapWords(n){                                            // say the gap the way a person would check it
+  const on=C.weekdays.split(',').filter(Boolean).map(Number); if(!on.length) return '';
+  let day=on.includes(5)?5:on[on.length-1], left=n, start=day;
+  while(left>0){day=day%7+1; if(on.includes(day)) left--;}
+  return `so an email sent on a ${DAYNAMES[start]} is followed up on a ${DAYNAMES[day]}`;
+}
+function drawSteps(){
+  $('#steps').innerHTML=C.steps.map((s,i)=>{const v=s.versions[s.show]||s.versions[0], SL=stepLocked(s), thread=i>0&&s.same_thread!==0&&s.same_thread!==false;
+   return `<div class="step" data-i="${i}"><div class="stephead"><b>Email ${i+1}</b>
+     ${i===0?'<span class="muted">sent first</span>':`<span class="muted">sent</span><input type="number" min="1" max="60" class="gap" value="${s.gap_days||3}" ${SL?'disabled':''}><span class="muted">sending days after email ${i}, if nobody at the business has replied <span class="small">(${gapWords(s.gap_days||3)})</span></span>`}
+     ${!locked()&&i>0?'<button class="quiet danger delstep" style="margin-left:auto">Delete email</button>':''}</div>
+    ${i>0?`<div class="chips" style="margin-bottom:10px"><button class="chip conv ${thread?'on':''}" data-t="1" ${SL?'disabled':''}>Same conversation</button><button class="chip conv ${thread?'':'on'}" data-t="0" ${SL?'disabled':''}>New conversation</button>
+      <span class="muted small" style="align-self:center">${thread?'Arrives as a reply under your first email, the way a person follows up.':'Arrives as a fresh email with its own subject.'}</span></div>`:''}
+    <div class="chips" style="margin-bottom:10px;align-items:center"><span class="muted small">Versions</span>
+      ${s.versions.map((ver,k)=>{const n=C.numbers[`${i+1}.${k}`];return `<button class="chip vchip ${k===s.show?'on':''}" data-k="${k}" style="${ver.paused?'opacity:.55;text-decoration:line-through':''}"><b>${LET[k]}</b>${n?`<small>${n.sent} sent · ${n.replied} replied${n.sent?' · '+pct(n.replied,n.sent):''}</small>`:''}</button>`}).join('')}
+      ${SL||s.versions.length>=4?'':'<button class="quiet addv" title="Add a version to compare">+ version</button>'}
+      ${s.versions.length>1&&locked()?`<button class="quiet rest">${v.paused?'Bring '+LET[s.show]+' back':'Rest version '+LET[s.show]}</button>`:''}
+      ${s.versions.length>1&&!SL?'<button class="quiet danger delv">Remove this version</button>':''}</div>
+    <div class="split"><div>
+      ${thread?`<div class="muted small" style="padding:7px 2px">Subject: Re: (the subject of email 1)</div>`:`<input class="subject" placeholder="Subject line" value="${esc(v.subject)}" ${SL?'disabled':''}>`}
+      <textarea class="body" rows="9" placeholder="Write the email. Your signature, business details and the opt-out line are added for you." ${SL?'disabled':''} style="margin-top:8px">${esc(v.body)}</textarea>
+      ${SL?'':`<div class="chips" style="margin-top:6px"><span class="muted small" style="align-self:center">Insert</span>${S.fields.map(f=>`<button class="chip field" data-f="${f}">{${f}}</button>`).join('')}</div>`}
+      <div class="usage small" style="margin-top:8px"></div><div class="hints small" style="margin-top:6px"></div>
+    </div><div>
+      <div class="inboxrow"><span class="muted">How it shows up in their inbox</span></div>
+      <div class="chips" style="margin:8px 0 6px"><button class="chip dev on" data-w="">Desktop</button><button class="chip dev" data-w="360">Phone</button><button class="chip dev" data-w="text">Text part</button>
+        <span style="flex:1"></span><button class="quiet prev">&larr;</button><span class="muted small who" style="align-self:center"></span><button class="quiet next">&rarr;</button></div>
+      <div class="previewbox"></div><div class="warnline pwarn"></div>
+      ${SL?'':'<div class="row" style="margin-top:8px"><input class="testto" placeholder="your own address" style="flex:2"><button class="sendtest">Send me this</button></div>'}</div></div></div>`}).join('');
+  $$('.step[data-i]').forEach(el=>{
+    const i=+el.dataset.i, s=C.steps[i], cur=()=>s.versions[s.show];
+    $$('.vchip',el).forEach(b=>b.onclick=()=>{s.show=+b.dataset.k;drawSteps();});
+    $$('.conv',el).forEach(b=>b.onclick=()=>{s.same_thread=+b.dataset.t;drawSteps();});
+    const g=$('.gap',el); if(g) g.oninput=()=>{s.gap_days=+g.value||3;refreshAudience();};
+    const su=$('.subject',el); if(su) su.oninput=e=>{cur().subject=e.target.value;previewSoon(i);};
+    $('.body',el).oninput=e=>{cur().body=e.target.value;previewSoon(i);};
+    $$('.field',el).forEach(b=>b.onclick=()=>{const t=$('.body',el),p=t.selectionStart,ins='{'+b.dataset.f+'}';t.value=t.value.slice(0,p)+ins+t.value.slice(t.selectionEnd);cur().body=t.value;t.focus();t.selectionStart=t.selectionEnd=p+ins.length;previewSoon(i);});
+    const add=$('.addv',el); if(add) add.onclick=()=>{s.versions.push({subject:cur().subject,body:cur().body});s.show=s.versions.length-1;drawSteps();toast('Version '+LET[s.show]+' starts as a copy. Change one thing so you know what made the difference.');};
+    const dv=$('.delv',el); if(dv) dv.onclick=()=>{s.versions.splice(s.show,1);s.show=0;drawSteps();};
+    const rs=$('.rest',el); if(rs) rs.onclick=async()=>{cur().paused=cur().paused?0:1;await save();toast(cur().paused?'Version '+LET[s.show]+' is resting. Its leads get the other version from now on. You can bring it back.':'Version '+LET[s.show]+' is back.');drawSteps();};
+    const ds=$('.delstep',el); if(ds) ds.onclick=()=>{C.steps.splice(i,1);drawSteps();refreshAudience();};
+    $$('.dev',el).forEach(b=>b.onclick=()=>{$$('.dev',el).forEach(x=>x.classList.toggle('on',x===b));s.view=b.dataset.w;refreshPreview(i);});
+    const move=d=>{if(!AUD||!AUD.ids.length)return;LEAD=(LEAD+d+AUD.ids.length)%AUD.ids.length;sampleId=AUD.ids[LEAD];C.steps.forEach((_,k)=>refreshPreview(k));};
+    $('.prev',el).onclick=()=>move(-1); $('.next',el).onclick=()=>move(1);
+    const st=$('.sendtest',el); if(st) st.onclick=async()=>{const to=$('.testto',el).value.trim();if(!to)return toast('Type one of your own addresses.');
+      const r=await api('/api/test-send',{...previewBody(i),to});if(r.ok)toast('Sent to '+to+' from '+r.from+', written as if for '+r.as_if_to);};
+    drawUsage(i); refreshPreview(i);
+  });
+}
+function drawUsage(i){
+  const el=$(`.step[data-i="${i}"] .usage`), u=(C.field_usage||[])[i]; if(!el||!u||!u.fields.length){if(el)el.innerHTML='';return;}
+  el.innerHTML=u.fields.filter(f=>f.empty||!f.known).map(f=>!f.known?`<div class="badline">{${esc(f.field)}} is not a field. It would be sent as written.</div>`:
+    f.fallback?`<div class="muted">{${esc(f.field)}}: ${f.empty.toLocaleString()} of ${u.leads.toLocaleString()} leads have none, so they get "${esc(f.fallback)}".</div>`
+      :`<div class="warnline" style="margin:0">{${esc(f.field)}}: ${f.empty.toLocaleString()} of ${u.leads.toLocaleString()} leads have none and would be left out. Write {${esc(f.field)}|something} to keep them.</div>`).join('');
+}
+const previewSoon=debounce(i=>refreshPreview(i),400);
+const previewBody=i=>{const s=C.steps[i], v=s.versions[s.show]||s.versions[0];return {subject:v.subject,body:v.body,filters:C.audience,campaign_id:C.id,contact_id:sampleId,position:i+1,same_thread:i>0&&s.same_thread!==0?1:0,look:C.look,first_plain:C.first_plain,first_subject:(C.steps[0].versions[0]||{}).subject||''};};
+async function refreshPreview(i){
+  const el=$(`.step[data-i="${i}"]`); if(!el) return; const s=C.steps[i];
+  const r=await fetch(BASE+'/api/preview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(previewBody(i))}).then(x=>x.json());
+  if(r.error){$('.previewbox',el).innerHTML=`<div class="preview"><span class="muted">${esc(r.error)}</span></div>`;return;}
+  sampleId=sampleId||r.contact_id;
+  const thread=i>0&&s.same_thread!==0, subj=thread?'Re: '+(r.thread_subject||'(the subject of email 1)'):(r.subject||'(no subject yet)');
+  $('.inboxrow',el).innerHTML=`<div class="muted small" style="margin-bottom:4px">How it shows up in their inbox</div><div class="irow"><b>${esc(r.from_name)}</b><span><b>${esc(subj)}</b> <span class="muted">- ${esc(r.first_line)}</span></span></div>`;
+  $('.who',el).textContent=AUD&&AUD.ids.length?`lead ${LEAD+1} of ${Math.min(AUD.ids.length,AUD.count)} · ${r.to}`:r.to;
+  const box=$('.previewbox',el);
+  if(s.view==='text') box.innerHTML=`<div class="preview">${esc(r.text)}</div>`;
+  else{const f=document.createElement('iframe');f.setAttribute('sandbox','');f.style.cssText=`width:${s.view?s.view+'px':'100%'};max-width:100%;height:300px;border:1px solid var(--line);border-radius:8px;background:#fff;display:block;margin:0 auto`;
+    f.srcdoc=`<body style="margin:12px">${r.html}</body>`;box.innerHTML='';box.append(f);}
+  $('.pwarn',el).textContent=r.missing.length?`This lead has nothing for: ${r.missing.join(', ')}. Leads like this one are left out unless you add a fallback.`:'';
+  $('.hints',el).innerHTML=r.hints.map(h=>`<div class="muted">&#9675; ${esc(h)}</div>`).join('');
+}
+async function save(){const doc={...C,steps:C.steps.map(s=>({gap_days:s.gap_days,same_thread:s.same_thread===0||s.same_thread===false?0:1,versions:s.versions.map(v=>({subject:v.subject,body:v.body,paused:v.paused?1:0}))}))};
+  for(const k of ['results','preflight','field_usage','numbers','still_waiting'])delete doc[k];return api('/api/campaign/save',doc);}
+async function freshen(){const f=await api('/api/campaign?id='+C.id);C.preflight=f.preflight;C.field_usage=f.field_usage;C.numbers=f.numbers;drawPreflight();C.steps.forEach((_,i)=>drawUsage(i));}
+function drawPreflight(){
+  const el=$('#preflight'); if(!el) return;
+  const P=C.preflight||[], blocks=P.filter(p=>p.level==='block'), n=AUD?AUD.count:0;
+  const mark={block:'<span class="dot" style="background:var(--bad)"></span>',warn:'<span class="dot warn"></span>',info:'<span class="dot"></span>'};
+  el.innerHTML=`<ul class="plain">${P.map(p=>`<li style="justify-content:flex-start;gap:6px;${p.level==='block'?'color:var(--bad)':p.level==='warn'?'color:var(--ink)':''}">${mark[p.level]}<span>${esc(p.text)}</span></li>`).join('')||'<li>Everything is in place.</li>'}</ul>
+   <p class="muted small">${blocks.length?'The red items have to be fixed before this can launch.':'Amber items are your call. Press Save to re-check after a change.'}</p>
+   <div style="margin-top:10px"><button class="primary" id="launch" ${blocks.length?'disabled':''}>Launch to ${n.toLocaleString()} businesses</button>
+    ${n>20?`<button id="launch20" ${blocks.length?'disabled':''}>Launch to the first 20</button> <span class="muted small">A careful start: read the replies, then send to the rest with one click.</span>`:''}</div>`;
+  $('#launch').onclick=()=>launch(); const l2=$('#launch20'); if(l2) l2.onclick=()=>launch(20);
+}
+async function launch(first){
+  await save(); await freshen(); if((C.preflight||[]).some(p=>p.level==='block')) return;
+  $('#launch').disabled=true; toast('Checking that every domain accepts mail. This can take a minute...');
+  const r=await api('/api/campaign/launch',{id:C.id,start_at:C.start_at,first});
+  if(r.error){drawPreflight();return;}
+  const skipped=Object.entries(r.left_out||{}).map(([k,v])=>`${v} left out (${k})`).join(', ');
+  toast(`${r.enrolled} businesses are in.${skipped?' '+skipped+'.':''}`); viewCampaign(C.id);
+}
+function drawResults(){
+  const R=C.results, top=Math.max(.02,...R.arms.map(a=>a.reply_high)), interested=R.arms.reduce((x,a)=>x+(a.positive||0),0), replied=R.arms.reduce((x,a)=>x+a.replied,0);
+  $('#results').innerHTML=`${C.still_waiting?`<div class="banner"><span><b>${C.still_waiting.toLocaleString()} more businesses match</b> and have not been added yet.</span><button id="rest">Send to the rest</button></div>`:''}
+  <div class="card"><h2>How it is going</h2>
+   <div class="row" style="margin:6px 0 12px"><div><div class="big">${interested}</div><div class="muted">interested</div></div><div><div class="big">${replied}</div><div class="muted">replied</div></div>
+     <div style="flex:4 1 300px"><div class="muted small" style="margin-top:6px">Which version is working</div><div>${esc(R.verdict)}</div></div></div>
+   <table><thead><tr><th>Version</th><th class="num">Leads</th><th class="num">Delivered</th><th class="num">Replied</th><th>Reply rate, with its margin of error</th><th class="num">Interested</th><th class="num">Bounced</th><th class="num">Unsubscribed</th></tr></thead><tbody>
+   ${R.arms.map(a=>`<tr><td><b>${LET[a.arm]}</b></td><td class="num">${a.enrolled}</td><td class="num">${a.delivered}</td><td class="num">${a.replied}</td>
+     <td><div style="display:flex;gap:10px;align-items:center"><span style="width:44px" class="num">${pct(a.replied,a.delivered)}</span><div class="bar" style="flex:1"><i style="left:${100*a.reply_low/top}%;width:${100*(a.reply_high-a.reply_low)/top}%"></i>${a.delivered?`<b style="left:${100*(a.replied/a.delivered)/top}%"></b>`:''}</div></div></td>
+     <td class="num">${a.positive||0}</td><td class="num">${a.bounced} <span class="muted">${pct(a.bounced,a.contacted)}</span></td><td class="num">${a.unsubscribed}</td></tr>`).join('')}</tbody></table>
+   <div class="split" style="margin-top:16px"><div><label>By email in the series</label><table><thead><tr><th>Email</th><th class="num">Sent</th><th class="num">Replies it drew</th><th class="num">Bounces</th></tr></thead><tbody>
+     ${R.steps.map(s=>`<tr><td>Email ${s.position}</td><td class="num">${s.sent}</td><td class="num">${s.replies}</td><td class="num">${s.bounces}</td></tr>`).join('')||'<tr><td colspan="4" class="muted">Nothing sent yet.</td></tr>'}</tbody></table>
+     <p class="muted small" style="margin-top:10px">There is no open rate here on purpose. About half of all "opens" are mail programs fetching images by themselves, and the tracking pixel that measures them is what gets cold email filtered. Replies are the number that is true.</p></div>
+    <div class="feed"><label>Replies and bounces</label>${R.feed.map(f=>`<div class="item"><b>${esc(f.name)}</b> <span class="muted">${esc(f.email)} · version ${LET[f.arm]} · after email ${f.step_position??'-'} · ${new Date(f.at).toLocaleString()}</span>
+      <div><span class="pill">${esc(f.kind.replace('_',' '))}</span></div>${f.detail?`<div class="quote">${esc(f.detail)}</div>`:''}
+      ${f.kind==='reply'?`<button class="chip ${f.outcome==='positive'?'on':''}" data-e="${f.enrollment_id}" data-o="positive">Interested</button> <button class="chip ${f.outcome==='negative'?'on':''}" data-e="${f.enrollment_id}" data-o="negative">Not interested</button>`:''}</div>`).join('')||'<p class="muted">Nothing yet.</p>'}</div></div></div>`;
+  $$('#results [data-o]').forEach(b=>b.onclick=async()=>{await api('/api/outcome',{enrollment_id:+b.dataset.e,outcome:b.classList.contains('on')?null:b.dataset.o});viewCampaign(C.id);});
+  const rest=$('#rest'); if(rest) rest.onclick=async()=>{const r=await api('/api/campaign/launch',{id:C.id});if(!r.error){toast(r.enrolled+' more businesses added.');viewCampaign(C.id);}};
+}
+
+/* ── inboxes ────────────────────────────────────────────────────── */
+const STATEWORD={active:'Sending',paused:'Paused by you',resting:'Resting',broken:'Needs you'};
+/* SPF, DKIM and DMARC are the domain's paperwork, not the person's. When they pass, they are one
+   green line; the acronyms stay behind "Show the detail" for whoever actually wants them. */
+const DOMAIN_CHECKS={SPF:'Google is allowed to send email as your domain',DKIM:'Your emails are signed as genuinely yours',
+  DMARC:'Other mail systems know what to do with fakes',"Can receive replies":'Replies come back to you',
+  "Your own domain":'You are sending from a domain you own'};
+function healthLine(it){return `<li style="justify-content:flex-start;gap:6px;align-items:flex-start"><span class="dot ${it.state==='ok'?'ok':it.state==='warn'?'warn':''}" style="margin-top:6px;${it.state==='bad'?'background:var(--bad)':''}"></span>
+  <span><b>${esc(it.name)}</b> <span class="muted">${esc(it.says)}</span>${it.fix?`<div class="small" style="margin-top:2px">What to do: ${esc(it.fix)}</div>`:''}</span></li>`;}
+function healthList(h){
+  const items=h.items||[], dom=items.filter(i=>i.name in DOMAIN_CHECKS), rest=items.filter(i=>!(i.name in DOMAIN_CHECKS));
+  let out=rest.map(healthLine).join('');
+  if(!dom.length) return out;
+  const bad=dom.filter(i=>i.state!=='ok');
+  if(!bad.length){
+    out+=`<li style="justify-content:flex-start;gap:6px;align-items:flex-start"><span class="dot ok" style="margin-top:6px"></span>
+      <span><b>Your domain is set up correctly</b> <span class="muted">Mail sent from it will be trusted.</span>
+      <details class="small" style="margin-top:2px"><summary class="muted">Show the detail</summary><ul class="plain" style="margin-top:4px">${dom.map(i=>`<li style="justify-content:flex-start;gap:6px"><span>${esc(DOMAIN_CHECKS[i.name])} <span class="muted">(${esc(i.name)}): ${esc(i.says)}</span></span></li>`).join('')}</ul></details></span></li>`;
+  }else{
+    out+=bad.map(i=>healthLine({...i,name:DOMAIN_CHECKS[i.name]||i.name})).join('');
+    const okd=dom.filter(i=>i.state==='ok');
+    if(okd.length) out+=`<li style="justify-content:flex-start;gap:6px"><span class="dot ok"></span><span class="muted">${okd.map(i=>esc(DOMAIN_CHECKS[i.name])).join(' · ')}</span></li>`;
+  }
+  return out;}
+function viewMailbox(){
+  const s=S.settings;
+  $('#main').innerHTML=banners()+`
+  <div class="split"><div>
+   <div class="topbar"><div><b>${S.inboxes.length}</b> ${S.inboxes.length===1?'inbox':'inboxes'} <span class="muted">· together they can send ${S.capacity.cap_today} emails today</span></div><span style="flex:1"></span><button class="primary" id="addbox">Add an inbox</button></div>
+   <div id="wizard"></div>
+   ${S.inboxes.map(b=>`<div class="card" data-box="${b.id}"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><h2 style="margin:0">${esc(b.email)}</h2>
+      <span class="pill ${!b.has_password?'':b.status==='active'?'active':b.status==='broken'?'':'paused'}" ${b.status==='broken'?'style="background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)"':''}>${b.has_password?STATEWORD[b.status]:'Not connected'}${b.has_password&&b.status==='resting'&&b.resume_at?' until '+new Date(b.resume_at).toLocaleString([], {weekday:'short',hour:'2-digit',minute:'2-digit'}):''}</span>
+      <span class="muted small">${b.room.sent_24h} of ${b.room.cap} sent in the last 24 hours${b.slow_until&&new Date(b.slow_until)>new Date()?' · half speed for now':''}</span></div>
+     ${b.status_reason?`<p class="${b.status==='broken'?'badline':'warnline'}" style="margin:8px 0 0">${esc(b.status_reason)}</p>`:''}
+     ${!b.has_password?'<p class="badline" style="margin:8px 0 0">This inbox has no app password yet, so nothing can be sent from it. Press Edit and paste one in.</p>':''}
+     ${b.status!=='active'&&b.held?`<p class="muted small" style="margin:6px 0 0">${b.held} leads are mid-conversation with this inbox. Their follow-ups wait for it; they are never sent from another address.</p>`:''}
+     <ul class="plain hl">${b.health.items?healthList(b.health):'<li class="muted">Not checked yet.</li>'}</ul>
+     <div class="row" style="margin-top:6px"><button class="chk">Check now</button><button class="deep" title="Sends one email to itself and reads it back">Send itself a test</button>
+       <button class="pr">${b.status==='paused'?'Resume':b.status==='broken'||b.status==='resting'?'Resume now':'Pause'}</button><button class="quiet ed">Edit</button><button class="quiet danger rm">Remove</button></div>
+     <div class="editor"></div></div>`).join('')||'<div class="card"><p class="muted" style="margin:0">No inbox yet. Add the mailbox you want to send from. You can add more later: each one sends its own share and keeps its own conversations.</p></div>'}
+  </div><div>
+   <div class="card"><h2>Background sending</h2><p class="sub">Every 2 minutes while this Mac is awake: read every inbox for replies and bounces, then send at most one email from each. If the Mac sleeps, it picks up where it left off.</p>
+    <p><span class="dot ${S.schedule_on?'ok':''}"></span>${S.schedule_on?'On':'Off'}</p><button id="sched">${S.schedule_on?'Turn off':'Turn on'}</button> <button class="quiet" id="ticknow">Run once now</button><div id="tickout" class="small muted" style="margin-top:8px"></div></div>
+   <div class="card"><h2>On every email</h2><p class="sub">Added under your signature in every campaign. Australian law (Spam Act 2003) needs the business to be identified and an easy way to opt out.</p>
+    <label>Business details</label><textarea id="m_footer" rows="3" placeholder="Business name&#10;Street address, city, state">${esc(s.footer)}</textarea>
+    <label>Opt-out line</label><input id="m_unsub_line" value="${esc(s.unsub_line)}">
+    <label>Stop all sending if bounces pass (%)</label><input id="m_bounce_pause_pct" type="number" value="${esc(s.bounce_pause_pct)}" style="max-width:120px">
+    <div style="margin-top:12px"><button class="primary" id="msave">Save</button></div></div>
+   <div class="card"><h2>How many, how fast</h2><p class="sub">A new domain has no reputation. Each inbox starts at 10 a day and adds 3 a day up to 40, with a few minutes between emails. For more volume, add inboxes rather than raising these: 20 to 50 a day per inbox is what the careful senders do. There is no "warm-up network" here on purpose: Google shut those down in 2023 and they break its rules.</p></div>
+  </div></div>`;
+  wireBanners();
+  $('#addbox').onclick=()=>wizard();
+  $('#msave').onclick=async()=>{const r=await api('/api/settings',{footer:$('#m_footer').value,unsub_line:$('#m_unsub_line').value,bounce_pause_pct:$('#m_bounce_pause_pct').value});if(r.ok){toast('Saved');route();}};
+  $('#sched').onclick=async()=>{const r=await api('/api/schedule',{on:!S.schedule_on});if(r.message)toast(r.message);route();};
+  $('#ticknow').onclick=async()=>{$('#tickout').textContent='Running...';const r=await api('/api/tick',{});$('#tickout').textContent=JSON.stringify(r);};
+  $$('[data-box]').forEach(card=>{const id=+card.dataset.box, b=S.inboxes.find(x=>x.id===id);
+    const run=async deep=>{$('.hl',card).innerHTML=`<li class="muted">${deep?'Sending itself an email and reading it back. Up to a minute...':'Checking...'}</li>`;const h=await api('/api/inbox/check',{id,deep});$('.hl',card).innerHTML=healthList(h);};
+    $('.chk',card).onclick=()=>run(false); $('.deep',card).onclick=()=>run(true);
+    $('.pr',card).onclick=async()=>{await api('/api/inbox/status',{id,action:b.status==='active'?'pause':'resume'});route();};
+    $('.rm',card).onclick=async()=>{const r=await api('/api/inbox/status',{id,action:'remove'});if(r.ok)route();};
+    $('.ed',card).onclick=()=>{$('.editor',card).innerHTML=boxForm(b);wireForm($('.editor',card),b);};});
+}
+function boxForm(b){const f=(k,label,type='text',ph='')=>`<div><label>${label}</label><input data-k="${k}" type="${type}" value="${esc(b[k]??'')}" placeholder="${ph}"></div>`;
+  return `<div class="step" style="margin-top:12px"><div class="row">${f('from_name','Your name as it appears')}${b.id?'':f('email','Address','email','you@yourdomain.com')}</div>
+   <label>${b.provider==='google'?'App password':'Password'} ${b.id&&b.has_password?'<span class="muted">(saved; type a new one to replace it)</span>':''}</label><input data-k="password" type="password" autocomplete="off" placeholder="${b.provider==='google'?'16 letters from Google':''}">
+   <label>Signature <span class="muted">(your sign-off; business details are added separately)</span></label><textarea data-k="signature" rows="3" placeholder="Sam Taylor&#10;0400 000 000">${esc(b.signature||'')}</textarea>
+   <details style="margin-top:8px" ${b.provider==='other'&&!b.id?'open':''}><summary class="muted small">Servers and pace</summary><div class="row">${f('smtp_host','Sending server')}${f('smtp_port','Port','number')}${f('imap_host','Reading server')}${f('imap_port','Port','number')}</div>
+     <div class="row">${f('ramp_start','Emails on day one','number')}${f('ramp_step','Add each day','number')}${f('daily_cap','Never more than','number')}${f('gap_min','Minutes between, from','number')}${f('gap_max','to','number')}</div></details>
+   <div style="margin-top:12px"><button class="primary savebox">${b.id?'Save':'Connect and check'}</button> <button class="quiet cancelbox">Cancel</button></div><ul class="plain result"></ul></div>`;}
+function wireForm(el,b){
+  $('.cancelbox',el).onclick=()=>{el.innerHTML='';};
+  $('.savebox',el).onclick=async()=>{const body={id:b.id,provider:b.provider};$$('[data-k]',el).forEach(i=>{if(i.value!=='')body[i.dataset.k]=i.value;});
+    const r=await api('/api/inbox/save',body); if(r.error) return;
+    $('.result',el).innerHTML='<li class="muted">Connected. Checking the logins and your domain records...</li>';
+    const h=await api('/api/inbox/check',{id:r.id}); $('.result',el).innerHTML=healthList(h)+`<li><button class="primary donebox">Done</button></li>`; $('.donebox',el).onclick=route;};
+}
+function wizard(){
+  const el=$('#wizard');
+  el.innerHTML=`<div class="card"><h2>Add an inbox</h2><p class="sub">Where is this mailbox?</p><div class="row">
+    <button class="step prov" data-p="google" style="text-align:left"><b>Google Workspace or Gmail</b><div class="muted small">Connects with an app password. Two minutes.</div></button>
+    <button class="step prov" data-p="microsoft" style="text-align:left"><b>Microsoft 365 or Outlook</b><div class="muted small">Not yet: Microsoft no longer lets mail be read with a password.</div></button>
+    <button class="step prov" data-p="other" style="text-align:left"><b>Another provider</b><div class="muted small">Any mailbox with SMTP and IMAP: Zoho, Fastmail, your web host.</div></button></div><div id="wizbody"></div></div>`;
+  $$('.prov',el).forEach(b=>b.onclick=()=>{const p=b.dataset.p, body=$('#wizbody');
+    if(p==='microsoft'){body.innerHTML=`<p class="warnline">Microsoft turned off password access for reading mail in October 2022, and password sending is being switched off by default at the end of 2026. Microsoft mailboxes need a Microsoft sign-in, which is not built here yet. A Google Workspace mailbox on your sending domain works today.</p>`;return;}
+    body.innerHTML=(p==='google'?`<p class="sub" style="margin-top:12px">Google will not let any program into a mailbox with your normal password. Instead you ask Google for a second, throwaway password that only mail programs can use. Two minutes, once.</p>
+      <ol class="setup"><li><a href="https://myaccount.google.com/signinoptions/two-step-verification" target="_blank" rel="noopener">Turn on 2-step verification</a> for this mailbox, if it is not on already. Google only hands out these passwords to accounts that have it.</li>
+      <li><a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">Ask Google for the password</a>, call it "maps-leads", and copy the 16 letters it shows you. Nothing to choose or configure. If Google says the page is not available, whoever runs your Google account has switched this off and can switch it back on.</li>
+      <li>Paste it below. It is kept in this Mac's keychain, never in the project files, and you can throw it away from that same Google page whenever you like. It stops working if you change the account's real password.</li></ol>`:'')
+      +boxForm({provider:p,smtp_port:465,imap_port:993,smtp_host:p==='google'?'smtp.gmail.com':'',imap_host:p==='google'?'imap.gmail.com':'',ramp_start:10,ramp_step:3,daily_cap:40,gap_min:3,gap_max:9});
+    wireForm(body,{provider:p}); $('.cancelbox',body).onclick=()=>{el.innerHTML='';};});
+}
+
+/* ── ask: describe it, confirm it ─────────────────────────────────── */
+const CHAT=[]; const CONV='c'+Date.now();
+function viewAsk(){
+  $('#main').innerHTML=banners()+`<div class="card" style="max-width:820px;margin:0 auto"><h2>Ask</h2>
+   <p class="sub">Describe what you need. The assistant can look at this project and prepare a search, a find-emails job or a draft campaign. Nothing runs until you press the button on the card it shows you, and it cannot launch a campaign or send an email at all.</p>
+   ${S.has_ai_key?'':'<p class="warnline">No AI key yet. Add one on the <a href="/">Projects</a> screen. Every other tab works without it.</p>'}
+   <div id="chat"></div>
+   <div class="row" style="margin-top:12px;align-items:flex-end"><textarea id="askbox" rows="2" style="flex:6" placeholder="Find sports wholesalers around New Delhi, within 25 km"></textarea><button class="primary" id="askgo" style="flex:0 0 auto">Ask</button></div>
+   <div class="chips" style="margin-top:8px">${['What is in this project?','Find more businesses like the ones I already have','Draft a 3 email series for my best-rated leads with no website','How are my searches going?'].map(t=>`<button class="chip eg">${t}</button>`).join('')}</div></div>`;
+  wireBanners(); drawChat();
+  const send=async()=>{const t=$('#askbox').value.trim();if(!t)return;$('#askbox').value='';CHAT.push({who:'you',text:t},{who:'wait'});drawChat();
+    const r=await api('/api/ask',{conversation_id:CONV,text:t});CHAT.pop();CHAT.push(r.error?{who:'it',text:r.error,cards:[]}:{who:'it',text:r.reply,cards:r.cards||[]});drawChat();};
+  $('#askgo').onclick=send; $('#askbox').onkeydown=e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))send();};
+  $$('.eg').forEach(b=>b.onclick=()=>{$('#askbox').value=b.textContent;$('#askbox').focus();});
+}
+function drawChat(){
+  const el=$('#chat'); if(!el) return;
+  el.innerHTML=CHAT.map((m,i)=>m.who==='wait'?'<p class="muted">Thinking...</p>':`<div style="margin:12px 0"><div class="muted small">${m.who==='you'?'You':'Assistant'}</div>
+    <div style="white-space:pre-wrap">${esc(m.text)}</div>${(m.cards||[]).map((c,k)=>`<div class="askcard" data-m="${i}" data-k="${k}"></div>`).join('')}</div>`).join('');
+  $$('.askcard',el).forEach(box=>{const c=CHAT[+box.dataset.m].cards[+box.dataset.k];
+    if(c.done){box.innerHTML=`<div class="step" style="margin-top:10px"><span class="muted">${esc(c.done)}</span></div>`;return;}
+    if(c.type==='plan') drawPlan(box,c.plan,()=>{c.done='Started. Progress is on the Find leads tab.';drawChat();});
+    if(c.type==='enrich'){box.innerHTML=`<div class="step" style="margin-top:10px"><b>Find emails</b><p class="sub" style="margin:4px 0 10px">Visit ${c.todo.toLocaleString()} business websites and read the contact details published there. Runs in the background.</p><button class="primary">Start</button></div>`;
+      $('button',box).onclick=async()=>{const r=await api('/api/enrich/start',{});if(!r.error){c.done='Started. Progress is on the Find leads tab.';drawChat();}};}
+    if(c.type==='campaign') box.innerHTML=`<div class="step" style="margin-top:10px"><b>${esc(c.name)}</b> <span class="pill">draft</span><p class="sub" style="margin:4px 0 10px">${c.inboxes.toLocaleString()} inboxes match. Nothing is sent until you launch it yourself.</p><a href="#/c/${c.id}"><button>Review and edit</button></a></div>`;});
+  el.lastElementChild?.scrollIntoView({block:'nearest'});
+}
+
+/* ── find leads: search Google Maps, then find emails ─────────────── */
+let findTimer=null, PLAN=null;
+const hrs=h=>{const m=Math.max(1,Math.round(h*60));return h<1?`about ${m} minute${m>1?'s':''}`:`about ${h} hours`;};
+async function viewFind(){
+  clearInterval(findTimer);
+  const J=await api('/api/jobs');
+  $('#main').innerHTML=banners()+`<div class="split"><div>
+   <div class="card"><h2>Search Google Maps</h2><p class="sub">Say what kind of business and where. You see what it will cost in time before anything is requested.</p>
+    <label>What to search for, one phrase per line</label><textarea id="ph" rows="3" placeholder="plumbers&#10;emergency plumber&#10;gas fitter"></textarea>
+    <div class="muted small" style="margin-top:4px">One phrase finds roughly a quarter of what is really there. Three or four ways of saying it finds most of it. They run one after another.</div>
+    <div class="row"><div><label>Country (two letters)</label><input id="cc" value="${esc(J.country)}" maxlength="2" style="text-transform:uppercase"></div>
+      <div style="flex:2"><label>Around a city or town (leave empty for the whole country)</label><input id="near" placeholder="Auckland"></div>
+      <div><label>Within (km)</label><input id="rad" type="number" min="1" max="300" value="25"></div></div>
+    <label style="margin-top:12px"><input type="checkbox" id="sample"> Just a quick sample first (4 map searches, about a minute) to see what comes back</label>
+    <div style="margin-top:12px"><button class="primary" id="planBtn">Show me the plan</button> <span id="planWait" class="muted small"></span></div>
+    <div id="plancard"></div></div>
+  </div><div>
+   <div class="card"><h2>Find emails</h2><p class="sub">Visits each business's own website and reads the contact details published there. ${J.leads.toLocaleString()} businesses in this project, ${J.with_email.toLocaleString()} with an email so far.</p>
+    <button id="enrichBtn" ${J.enrich_todo?'':'disabled'}>${J.enrich_todo?`Check ${J.enrich_todo.toLocaleString()} websites`:'Every website has been checked'}</button></div>
+   <div class="card"><h2>Jobs</h2><div id="joblist"></div></div></div></div>`;
+  wireBanners(); drawJobs(J);
+  $('#planBtn').onclick=async()=>{
+    $('#planWait').textContent='Working it out. The first time it downloads a list of the world\'s towns (30 MB)...';
+    PLAN=await api('/api/scrape/plan',{phrases:$('#ph').value.split('\n'),country:$('#cc').value.toUpperCase(),near:$('#near').value.trim(),radius_km:$('#near').value.trim()?$('#rad').value:'',sample:$('#sample').checked});
+    $('#planWait').textContent=''; if(PLAN.error){PLAN=null;return;} drawPlan($('#plancard'),PLAN);};
+  $('#enrichBtn').onclick=async()=>{await api('/api/enrich/start',{});viewFind();};
+  findTimer=setInterval(async()=>{if(location.hash!=='#/find')return clearInterval(findTimer);drawJobs(await api('/api/jobs'));},4000);
+}
+function drawPlan(el,P,onDone){
+  el.innerHTML=`<div class="step" style="margin-top:14px"><b>The plan</b>
+   <ul class="plain"><li><span>Search for</span><span>${P.phrases.map(esc).join(' · ')}</span></li>
+    <li><span>Where</span><span>${P.request.near?esc(P.request.near)+', within '+esc(P.request.radius_km)+' km':'all of '+esc(P.request.country)}</span></li>
+    <li><span>Towns and cities covered</span><span>${P.places.toLocaleString()} (${P.biggest.slice(0,4).map(b=>esc(b.name)).join(', ')}${P.places>4?', ...':''})</span></li>
+    <li><span>Map searches</span><span>about ${(P.est_points*P.phrases.length).toLocaleString()}</span></li>
+    <li><span>Time</span><span>${hrs(P.hours)}, in the background</span></li></ul>
+   <div class="muted small">${P.promises.map(esc).join(' ')}</div>
+   <div style="margin-top:10px"><button class="primary go">Start</button> <button class="quiet no">Not now</button></div></div>`;
+  $('.no',el).onclick=()=>el.innerHTML='';
+  $('.go',el).onclick=async()=>{const r=await api('/api/scrape/start',P.request);if(r.error)return;el.innerHTML='';toast('Started. Leads appear on the board as each phrase finishes.');(onDone||viewFind)();};
+  $('.no',el).onclick=()=>{el.innerHTML='';};
+}
+function drawJobs(J){
+  const el=$('#joblist'); if(!el) return;
+  el.innerHTML=J.runs.map(r=>{const p=r.progress, pc=p&&p.points_total?Math.round(100*p.points_done/p.points_total):0;
+    const word={running:'running',done:'finished',stopped:'stopped',blocked:'paused: Google pushed back. Wait an hour, then resume.',failed:'failed'}[r.state];
+    return `<div class="item" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>${esc(r.label)}</b> <span class="pill ${r.state==='running'?'active':r.state==='blocked'?'paused':''}">${word}</span>
+     ${p?`<div class="bar" style="margin:8px 0 4px"><i style="left:0;width:${pc}%"></i></div><div class="muted small">${p.found.toLocaleString()} businesses found · ${p.points_done} of ${p.points_total} map searches · phrase ${Math.min(p.phrases_done+1,p.phrases)} of ${p.phrases}${p.phrase&&r.state==='running'?' ('+esc(p.phrase)+')':''}</div>`:''}
+     ${r.state!=='done'&&r.last_line?`<div class="muted small" style="font-family:var(--mono);margin-top:4px;overflow-wrap:anywhere">${esc(r.last_line)}</div>`:''}
+     <div style="margin-top:6px">${r.state==='running'?`<button data-stop="${r.id}">Stop</button>`:''}${r.kind==='scrape'&&(r.state==='stopped'||r.state==='blocked')?`<button data-resume="${r.id}">Resume</button>`:''}</div></div>`}).join('')||'<p class="muted">Nothing has run yet.</p>';
+  $$('[data-stop]',el).forEach(b=>b.onclick=async()=>{await api('/api/run/stop',{id:+b.dataset.stop});setTimeout(viewFind,1500);});
+  $$('[data-resume]',el).forEach(b=>b.onclick=async()=>{await api('/api/scrape/resume',{id:+b.dataset.resume});viewFind();});
+}
+
+/* ── inbox: every campaign's replies in one place ─────────────────── */
+async function viewInbox(){
+  const d=await api('/api/inbox');
+  $('#main').innerHTML=banners()+`<div class="card feed"><h2>Replies</h2><p class="sub">Replies, unsubscribes and bounces from every campaign, newest first. To answer someone, reply in the mailbox itself: the thread is already there.</p>
+   ${d.rows.map(f=>`<div class="item"><b>${esc(f.name)}</b> <span class="muted">${esc(f.email)} · <a href="#/c/${f.campaign_id}">${esc(f.campaign)}</a> · version ${LET[f.arm]} · after email ${f.step_position??'-'} · ${new Date(f.at).toLocaleString()}</span>
+     <div><span class="pill">${esc(f.kind.replace('_',' '))}</span></div>${f.detail?`<div class="quote">${esc(f.detail)}</div>`:''}
+     ${f.kind==='reply'?`<button class="chip ${f.outcome==='positive'?'on':''}" data-e="${f.enrollment_id}" data-o="positive">Interested</button> <button class="chip ${f.outcome==='negative'?'on':''}" data-e="${f.enrollment_id}" data-o="negative">Not interested</button>`:''}</div>`).join('')||'<p class="muted">Nothing yet. Replies show up here within a couple of minutes of arriving.</p>'}</div>`;
+  wireBanners();
+  $$('[data-o]').forEach(b=>b.onclick=async()=>{await api('/api/outcome',{enrollment_id:+b.dataset.e,outcome:b.classList.contains('on')?null:b.dataset.o});viewInbox();});
+}
+
+/* ── do not contact ─────────────────────────────────────────────── */
+async function viewDnc(){
+  const d=await api('/api/dnc');
+  $('#main').innerHTML=`<div class="card"><h2>Do not contact</h2><p class="sub">Checked before every single send, in every campaign. Hard bounces and unsubscribes are added on their own. Add a whole domain to cover every address at a business.</p>
+   <div class="row"><input id="dv" placeholder="name@business.com.au or business.com.au" style="flex:3"><input id="dr" placeholder="Why (optional)" style="flex:2"><button class="primary" id="dadd" style="flex:0 0 auto">Add</button></div></div>
+   <div class="card" style="padding:4px 8px"><table><thead><tr><th>Address or domain</th><th>Why</th><th>Added</th><th></th></tr></thead><tbody>
+   ${d.rows.map(r=>`<tr><td>${esc(r.value)}</td><td class="muted">${esc(r.reason)}</td><td class="muted">${new Date(r.added_at).toLocaleDateString()}</td><td class="num"><button class="quiet" data-k="${r.kind}" data-v="${esc(r.value)}">Remove</button></td></tr>`).join('')||'<tr><td colspan="4" class="muted">Nobody yet.</td></tr>'}</tbody></table></div>`;
+  $('#main').innerHTML+=`<div class="card" style="padding:12px 16px 4px"><h2>Dead addresses</h2><p class="sub">Addresses that hard-bounced, in this project or any other of yours. They are blocked everywhere, because a dead inbox is dead for every sender and each repeat bounce hurts the mailbox. Only the address and date are shared, never which project found it.</p>
+   <table><tbody>${d.dead.map(r=>`<tr><td>${esc(r.email)}</td><td class="muted">${esc((r.why||'').slice(0,80))}</td><td class="muted">${new Date(r.added_at).toLocaleDateString()}</td><td class="num"><button class="quiet" data-revive="${esc(r.email)}">It works again</button></td></tr>`).join('')||'<tr><td class="muted">None yet.</td></tr>'}</tbody></table></div>`;
+  $$('[data-revive]').forEach(b=>b.onclick=async()=>{await api('/api/dead/revive',{email:b.dataset.revive});route();});
+  $('#dadd').onclick=async()=>{const r=await api('/api/dnc/add',{value:$('#dv').value,reason:$('#dr').value});if(r.ok)route();};
+  $$('[data-k]').forEach(b=>b.onclick=async()=>{await api('/api/dnc/remove',{kind:b.dataset.k,value:b.dataset.v});route();});
+}
+route();
+</script>
+</body>
+</html>
